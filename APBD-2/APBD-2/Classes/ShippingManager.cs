@@ -10,14 +10,18 @@ public class ShippingManager
             isHazardous);
     }
 
-    public GasContainer GasContainerCreator(double currentLoad, int height, int containerWeight, int depth, int maxLoad, int pressure)
+    public GasContainer CreateGasContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, int pressure)
     {
-        string serialNumber=
+        string serialNumber = "KON-G" + uniqueID++;
+        return new GasContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad,
+            pressure);
     }
 
-    public CoolingContainer CoolingContainerCreator(double currentLoad, int height, int containerWeight, int depth, int maxLoad, List<Product> products, double containerTemperature)
+    public CoolingContainer CreateCoolingContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, List<Product> products, double containerTemperature)
     {
-        string serialNumber=
+        string serialNumber = "KON-C" + uniqueID++;
+        return new CoolingContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad, products,
+            containerTemperature);
     }
     
     

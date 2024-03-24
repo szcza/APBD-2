@@ -1,4 +1,6 @@
-﻿namespace APBD_2;
+﻿using System.Text;
+
+namespace APBD_2;
 
 public class Ship
 {
@@ -13,5 +15,14 @@ public class Ship
         this.speed = speed;
         this.maxContainers = maxContainers;
         this.maxWeight = maxWeight;
+    }
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Speed: {speed} knots");
+        sb.AppendLine($"Max Containers: {maxContainers}");
+        sb.AppendLine($"Max Weight: {maxWeight} tons");
+        sb.AppendLine($"Containers: {Containers.ToString()}");
+        return sb.ToString();
     }
 }

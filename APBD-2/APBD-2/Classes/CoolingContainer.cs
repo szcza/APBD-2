@@ -1,8 +1,10 @@
-﻿namespace APBD_2;
+﻿using System.Text;
+
+namespace APBD_2;
 
 public class CoolingContainer:Container
 {
-    public List<Product> products { get; }
+    public List<Product> products { get; set; }
     public double containerTemperature { get; }
 
     public CoolingContainer(double currentLoad, int height, int containerWeight, int depth, string serialNumber, int maxLoad, List<Product> products, double containerTemperature) : base(currentLoad, height, containerWeight, depth, serialNumber, maxLoad)
@@ -39,5 +41,19 @@ public class CoolingContainer:Container
 
         return productSet.Count == 1;
     }
-    
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(base.ToString()); // Include base class (Container) info
+
+        sb.AppendLine("Products:");
+        foreach (var product in products)
+        {
+            sb.AppendLine($"- Name: {product.name}, Min Temperature: {product.minTemperature}");
+        }
+
+        sb.AppendLine($"Container Temperature: {containerTemperature}");
+
+        return sb.ToString();
+    }
 }

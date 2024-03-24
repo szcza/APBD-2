@@ -1,8 +1,11 @@
-﻿namespace APBD_2;
+﻿using System.Text;
+
+namespace APBD_2;
 
 public class ShippingManager
 {
     private int uniqueID = 1;
+    
     public LiquidContainer CreateLiquidContainer(int currentLoad, int height, int containerWeight, int depth, int maxLoad, bool isHazardous)
     {
         string serialNumber = "KON-L" + uniqueID++;
@@ -25,46 +28,45 @@ public class ShippingManager
             containerTemperature);
     }
 
-    public void LoadCoolingContainer(List<Product> products)
+    public void LoadCoolingContainer(CoolingContainer container,List<Product> products)
     {
-        ShippingManager.CreateCoolingContainer().products=
+        container.products = products;
     }
-    public void LoadContainers(List<Container> containers)
+    public void LoadContainers(Ship ship,List<Container> containers)
     {
         for (int i = 0; i < containers.Count; i++)
         {
-            
+            ship.Containers.Add(containers[i]);
         }
     }
 
-    public void UnloadContainer(string serialNumber)
+    public void UnloadContainer(Ship ship,string serialNumber)
     {
-        for (int i = 0; i < Containers.Count; i++)
+        for (int i = 0; i < ship.Containers.Count; i++)
         {
-            if (Containers[i].SeriesNumber.Equals(serialNumber))
+            if (ship.Containers[i].serialNumber.Equals(serialNumber))
             {
-                Containers.Remove(Containers[i]);
+                ship.Containers.RemoveAt(i);
             }
         }
     }
 
-    public void ReplaceContainer(string containerNumber, Container newContainer)
+    public void ReplaceContainer(Ship ship,string serialNumber, Container newContainer)
     {
-        // Implementacja zastępowania kontenera na statku
+        for (int i = 0; i < ship.Containers.Count; i++)
+        {
+            if (ship.Containers[i].serialNumber.Equals(serialNumber))
+            {
+                ship.Containers.RemoveAt(i);
+                ship.Containers.Insert(i,newContainer);
+            }
+        }
     }
 
-    public void SwitchContainersBetweenShips()
+    public void SwitchContainersBetweenShips(Ship FromShip, Container container, Ship ToShip)
     {
-        Containers.Remove(container);
-        contaierShip.AddContainer(container);
-    }
-    public void DisplayContainerInfo()
-    {
-        Container.
-    }
-    public void DisplayShipInfo()
-    {
-        // Wypisanie informacji o statku i jego ładunku
+        FromShip.Containers.Remove(container);
+        ToShip.Containers.Add(container);
     }
     
 }

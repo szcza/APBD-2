@@ -1,4 +1,6 @@
-﻿namespace APBD_2;
+﻿using System.Text;
+
+namespace APBD_2;
 
 public class LiquidContainer: Container, IHazardNotifier
 {
@@ -30,6 +32,14 @@ public class LiquidContainer: Container, IHazardNotifier
         }
 
         base.Load(cargoWeight);
+    }
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(base.ToString()); // Include base class (Container) info
+        sb.AppendLine($"Is Hazardous: {isHazardous}");
+
+        return sb.ToString();
     }
     
 }

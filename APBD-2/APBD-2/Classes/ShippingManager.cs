@@ -17,12 +17,54 @@ public class ShippingManager
             pressure);
     }
 
-    public CoolingContainer CreateCoolingContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, List<Product> products, double containerTemperature)
+    public CoolingContainer CreateCoolingContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, double containerTemperature)
     {
+        List<Product> products = new List<Product>();
         string serialNumber = "KON-C" + uniqueID++;
         return new CoolingContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad, products,
             containerTemperature);
     }
-    
+
+    public void LoadCoolingContainer(List<Product> products)
+    {
+        ShippingManager.CreateCoolingContainer().products=
+    }
+    public void LoadContainers(List<Container> containers)
+    {
+        for (int i = 0; i < containers.Count; i++)
+        {
+            
+        }
+    }
+
+    public void UnloadContainer(string serialNumber)
+    {
+        for (int i = 0; i < Containers.Count; i++)
+        {
+            if (Containers[i].SeriesNumber.Equals(serialNumber))
+            {
+                Containers.Remove(Containers[i]);
+            }
+        }
+    }
+
+    public void ReplaceContainer(string containerNumber, Container newContainer)
+    {
+        // Implementacja zastępowania kontenera na statku
+    }
+
+    public void SwitchContainersBetweenShips()
+    {
+        Containers.Remove(container);
+        contaierShip.AddContainer(container);
+    }
+    public void DisplayContainerInfo()
+    {
+        Container.
+    }
+    public void DisplayShipInfo()
+    {
+        // Wypisanie informacji o statku i jego ładunku
+    }
     
 }

@@ -2,12 +2,12 @@
 
 public class Container
 {
-    private int currentLoad { get; set; }
-    private int height { get; }
-    private int containerWeight { get; }
-    private int depth { get; }
-    private string serialNumber { get; }
-    private int maxLoad { get; }
+    public int currentLoad { get; set; }
+    public int height { get; }
+    public int containerWeight { get; }
+    public int depth { get; }
+    public string serialNumber { get; }
+    public int maxLoad { get; }
 
     public Container(int currentLoad, int height, int containerWeight, int depth, string serialNumber, int maxLoad)
     {
@@ -25,11 +25,19 @@ public class Container
         {
             throw new OverfillException("Cargo weight larger than container capacity");
         }
+        else
+        {
+             currentLoad=cargoLoad;
+        }
     }
 
     public void Unload()
     {
         currentLoad = 0;
+    }
+    public override string ToString()
+    {
+        return $"Container: {serialNumber}, Max Load: {maxLoad} kg, Current Load: {currentLoad} kg";
     }
     
 }

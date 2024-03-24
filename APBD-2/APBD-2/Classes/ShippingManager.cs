@@ -2,11 +2,12 @@
 
 public class ShippingManager
 {
-    
-    public LiquidContainer LiquidContainerCreator(int currentLoad, int height, int containerWeight, int depth, int maxLoad, bool isHazardous)
+    private int uniqueID = 1;
+    public LiquidContainer CreateLiquidContainer(int currentLoad, int height, int containerWeight, int depth, int maxLoad, bool isHazardous)
     {
-        LiquidContainer lq = new LiquidContainer()
-        string serialNumber="KON-L"
+        string serialNumber = "KON-L" + uniqueID++;
+        return new LiquidContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad,
+            isHazardous);
     }
 
     public GasContainer GasContainerCreator(double currentLoad, int height, int containerWeight, int depth, int maxLoad, int pressure)

@@ -22,7 +22,12 @@ public class Ship
         sb.AppendLine($"Speed: {speed} knots");
         sb.AppendLine($"Max Containers: {maxContainers}");
         sb.AppendLine($"Max Weight: {maxWeight} tons");
-        sb.AppendLine($"Containers: {Containers.ToString()}");
+        sb.AppendLine("Containers:");
+    
+        foreach (var container in Containers)
+        {
+            sb.AppendLine(container.ToString());
+        }
         return sb.ToString();
     }
 }

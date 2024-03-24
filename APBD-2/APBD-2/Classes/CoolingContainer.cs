@@ -44,7 +44,7 @@ public class CoolingContainer:Container
     public override string ToString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine(base.ToString()); // Include base class (Container) info
+        sb.AppendLine(base.ToString());
 
         sb.AppendLine("Products:");
         foreach (var product in products)

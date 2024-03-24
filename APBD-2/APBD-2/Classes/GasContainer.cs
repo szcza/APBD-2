@@ -1,4 +1,6 @@
-﻿namespace APBD_2;
+﻿using System.Text;
+
+namespace APBD_2;
 
 public class GasContainer : Container, IHazardNotifier
 {
@@ -32,6 +34,9 @@ public class GasContainer : Container, IHazardNotifier
     }
     public override string ToString()
     {
-        return $"Gas Container: {serialNumber}, Max Load: {maxLoad} kg, Current Load: {currentLoad} kg, Pressure: {pressure} atm";
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine(base.ToString());
+        sb.AppendLine($"Container Temperature: {pressure}");
+        return sb.ToString();
     }
 }

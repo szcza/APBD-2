@@ -8,14 +8,14 @@ public class ShippingManager
     
     public LiquidContainer CreateLiquidContainer(int currentLoad, int height, int containerWeight, int depth, int maxLoad, bool isHazardous)
     {
-        string serialNumber = "KON-L" + uniqueID++;
+        string serialNumber = "KON-L-" + uniqueID++;
         return new LiquidContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad,
             isHazardous);
     }
 
     public GasContainer CreateGasContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, int pressure)
     {
-        string serialNumber = "KON-G" + uniqueID++;
+        string serialNumber = "KON-G-" + uniqueID++;
         return new GasContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad,
             pressure);
     }
@@ -23,7 +23,7 @@ public class ShippingManager
     public CoolingContainer CreateCoolingContainer(double currentLoad, int height, int containerWeight, int depth, int maxLoad, double containerTemperature)
     {
         List<Product> products = new List<Product>();
-        string serialNumber = "KON-C" + uniqueID++;
+        string serialNumber = "KON-C-" + uniqueID++;
         return new CoolingContainer(currentLoad, height, containerWeight, depth, serialNumber, maxLoad, products,
             containerTemperature);
     }

@@ -2,14 +2,14 @@
 
 public class Container
 {
-    public int currentLoad { get; set; }
+    public double currentLoad { get; set; }
     public int height { get; }
     public int containerWeight { get; }
     public int depth { get; }
     public string serialNumber { get; }
     public int maxLoad { get; }
 
-    public Container(int currentLoad, int height, int containerWeight, int depth, string serialNumber, int maxLoad)
+    public Container(double currentLoad, int height, int containerWeight, int depth, string serialNumber, int maxLoad)
     {
         this.currentLoad = currentLoad;
         this.height = height;
@@ -19,7 +19,7 @@ public class Container
         this.maxLoad = maxLoad;
     }
 
-    public void Load(int cargoLoad)
+    public virtual void Load(double cargoLoad)
     {
         if (cargoLoad > maxLoad)
         {
@@ -31,7 +31,7 @@ public class Container
         }
     }
 
-    public void Unload()
+    public virtual void Unload()
     {
         currentLoad = 0;
     }
@@ -39,5 +39,6 @@ public class Container
     {
         return $"Container: {serialNumber}, Max Load: {maxLoad} kg, Current Load: {currentLoad} kg";
     }
+    
     
 }

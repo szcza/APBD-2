@@ -12,7 +12,7 @@ public class LiquidContainer: Container, IHazardNotifier
     {
         Console.WriteLine($"Hazard detected in container {containerNumber}");
     }
-    public new void Load(int cargoWeight)
+    public override void Load(double cargoWeight)
     {
         if (isHazardous)
         {
@@ -31,4 +31,5 @@ public class LiquidContainer: Container, IHazardNotifier
 
         base.Load(cargoWeight);
     }
+    
 }
